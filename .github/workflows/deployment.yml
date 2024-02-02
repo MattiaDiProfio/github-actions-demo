@@ -19,6 +19,7 @@ jobs:
         run: npm test
 
   deploy:
+    needs: test # identifier of job which must finish successfully before this job can start
     runs-on: ubuntu-latest
     steps:
       - name: Get code from repository
