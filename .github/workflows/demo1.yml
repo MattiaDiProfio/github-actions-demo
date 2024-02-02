@@ -5,10 +5,21 @@ on:
     types:
       - opened
       # - edited
+    branches:
+      - main
+      - "dev-*" # all branches with dev- in the start - dev-navbar
+      - "feat/**" # all branches with chars and / after the initial / - feat/navbar/darkmode
 
-  # define a trigger to allow us to manually start this workflow
   workflow_dispatch:
 
+  # event filter - only trigger event when pushing to specified branch
+  push:
+    branches:
+      - main
+      - "dev-*" # all branches with dev- in the start - dev-navbar
+      - "feat/**" # all branches with chars and / after the initial / - feat/navbar/darkmode
+    branches-ignore:
+      - "bug-*" # ignore all push requests from branches with pattern "bug-"
 jobs:
   deploy:
     runs-on: ubuntu-latest
