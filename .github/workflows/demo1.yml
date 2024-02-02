@@ -1,5 +1,14 @@
 name: Events Demo 1
-on: ...
+on:
+  # define a list of activity types which should trigger this workflow
+  pull_request:
+    types:
+      - opened
+      # - edited
+
+  # define a trigger to allow us to manually start this workflow
+  workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
